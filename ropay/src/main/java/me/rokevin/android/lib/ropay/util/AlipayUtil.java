@@ -93,7 +93,7 @@ public class AlipayUtil {
                 "&subject=\"" + subject + "\"" +
                 "&body=\"" + body + "\"" +
                 "&total_fee=\"" + totalFee + "\"" +
-                "&notify_url=\"http://" + notifyUrl + "\"" +
+                "&notify_url=\"" + notifyUrl + "\"" +
                 "&service=\"mobile.securitypay.pay\"" +
                 "&payment_type=\"1\"" +
                 "&_input_charset=\"utf-8\"&" +
