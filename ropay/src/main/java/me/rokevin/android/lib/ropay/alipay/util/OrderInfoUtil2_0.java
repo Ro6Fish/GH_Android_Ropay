@@ -15,10 +15,10 @@ import java.util.Random;
 import me.rokevin.android.lib.ropay.alipay.SignUtils;
 
 public class OrderInfoUtil2_0 {
-	
+
 	/**
 	 * 构造授权参数列表
-	 * 
+	 *
 	 * @param pid
 	 * @param app_id
 	 * @param target_id
@@ -73,7 +73,7 @@ public class OrderInfoUtil2_0 {
 		keyValues.put("app_id", app_id);
 
 		keyValues.put("biz_content", "{\"timeout_express\":\"30m\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":\"0.01\",\"subject\":\"1\",\"body\":\"我是测试数据\",\"out_trade_no\":\"" + getOutTradeNo() +  "\"}");
-		
+
 		keyValues.put("charset", "utf-8");
 
 		keyValues.put("method", "alipay.trade.app.pay");
@@ -83,13 +83,13 @@ public class OrderInfoUtil2_0 {
 		keyValues.put("timestamp", "2016-07-29 16:55:53");
 
 		keyValues.put("version", "1.0");
-		
+
 		return keyValues;
 	}
-	
+
 	/**
 	 * 构造支付订单参数信息
-	 * 
+	 *
 	 * @param map
 	 * 支付订单参数
 	 * @return
@@ -111,10 +111,10 @@ public class OrderInfoUtil2_0 {
 
 		return sb.toString();
 	}
-	
+
 	/**
 	 * 拼接键值对
-	 * 
+	 *
 	 * @param key
 	 * @param value
 	 * @param isEncode
@@ -135,13 +135,13 @@ public class OrderInfoUtil2_0 {
 		}
 		return sb.toString();
 	}
-	
+
 	/**
 	 * 对支付参数信息进行签名
-	 * 
+	 *
 	 * @param map
 	 *            待签名授权信息
-	 * 
+	 *
 	 * @return
 	 */
 	public static String getSign(Map<String, String> map, String rsaKey, boolean rsa2) {
@@ -171,7 +171,7 @@ public class OrderInfoUtil2_0 {
 		}
 		return "sign=" + encodedSign;
 	}
-	
+
 	/**
 	 * 要求外部订单号必须唯一。
 	 * @return

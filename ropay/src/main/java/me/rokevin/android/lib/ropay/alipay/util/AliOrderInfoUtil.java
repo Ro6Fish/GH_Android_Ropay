@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -37,6 +38,9 @@ public class AliOrderInfoUtil {
     public static String buildOrderParam(Map<String, String> map, boolean isEncode) {
 
         List<String> keys = new ArrayList<String>(map.keySet());
+
+        // key排序
+        Collections.sort(keys);
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < keys.size() - 1; i++) {

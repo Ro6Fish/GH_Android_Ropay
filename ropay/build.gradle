@@ -35,10 +35,10 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     provided files('libs/libammsdk.jar')
-    compile files('libs/alipaySdk-20161222.jar')
-    compile files('libs/android-support-v13.jar')
-    compile files('libs/UPPayAssistEx.jar')
-    compile files('libs/UPPayPluginExPro.jar')
+    provided files('libs/alipaySdk-20161222.jar')
+    // provided files('libs/android-support-v13.jar')
+    provided files('libs/UPPayAssistEx.jar')
+    provided files('libs/UPPayPluginExPro.jar')
 }
 
 def siteUrl = 'https://github.com/Ro6Fish/GH_Android_Ropay'   // 项目的主页
@@ -46,7 +46,7 @@ def gitUrl = 'git@github.com:Ro6Fish/GH_Android_Ropay.git'   // Git仓库的url
 group = "me.rokevin.android.lib"            // Maven Group ID for the artifact，一般填你唯一的包名
 // 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
 // 这个version影响后面的引用
-version = "0.0.4"
+version = "0.0.9"
 
 install {
     repositories.mavenInstaller {

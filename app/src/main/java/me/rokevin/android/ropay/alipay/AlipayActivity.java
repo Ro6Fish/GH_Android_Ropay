@@ -1,13 +1,13 @@
 package me.rokevin.android.ropay.alipay;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -18,12 +18,9 @@ import com.alipay.sdk.app.PayTask;
 
 import java.util.Map;
 
-import me.rokevin.android.lib.ropay.alipay.AliPayInfo;
 import me.rokevin.android.lib.ropay.alipay.AuthResult;
 import me.rokevin.android.lib.ropay.alipay.PayResult;
-import me.rokevin.android.lib.ropay.alipay.util.AliOrderInfoUtil;
 import me.rokevin.android.lib.ropay.alipay.util.OrderInfoUtil2_0;
-import me.rokevin.android.ropay.PayConfig;
 import me.rokevin.android.ropay.R;
 
 /**
@@ -36,7 +33,7 @@ import me.rokevin.android.ropay.R;
  * <p>
  * String appId, String notifyUrl, String outTradeNo, String totalAmount, String subject, String body, boolean rsa2
  */
-public class AlipayActivity extends FragmentActivity {
+public class AlipayActivity extends Activity {
 
     /**
      * 支付宝支付业务：入参app_id
@@ -46,7 +43,7 @@ public class AlipayActivity extends FragmentActivity {
     /**
      * 支付宝账户登录授权业务：入参pid值
      */
-    public static final String PID = "2088421497892509";
+    public static final String PID = "";
     /**
      * 支付宝账户登录授权业务：入参target_id值
      */
@@ -154,24 +151,6 @@ public class AlipayActivity extends FragmentActivity {
         String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
 
         String privateKey = rsa2 ? RSA2_PRIVATE : RSA_PRIVATE;
-
-        //==============
-
-
-        AliPayInfo aliPayInfo = new AliPayInfo();
-
-        aliPayInfo.setAppId(PayConfig.getAliAppId());
-        aliPayInfo.setNotifyUrl(PayConfig.getPayUrl());
-        aliPayInfo.setOutTradNo("170113181304579004");
-        aliPayInfo.setTotalAmount("0.01");
-        aliPayInfo.setSubject("干线物流");
-        aliPayInfo.setBody("物流支付");
-        aliPayInfo.setRas2(true);
-
-        params = AliOrderInfoUtil.buildOrderParamMap(aliPayInfo);
-        orderParam = OrderInfoUtil2_0.buildOrderParam(params);
-
-        //==============
 
         String sign = OrderInfoUtil2_0.getSign(params, privateKey, rsa2);
 

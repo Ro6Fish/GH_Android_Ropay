@@ -12,7 +12,7 @@ public class UnionActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_unionpay_base);
+        setContentView(R.layout.activity_unionpay_main);
 
         View v1 = findViewById(R.id.payBYapk);
         View v2 = findViewById(R.id.payBYjar);

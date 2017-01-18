@@ -8,9 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.unionpay.UPPayAssistEx;
+
 import me.rokevin.android.lib.ropay.RoPay;
 import me.rokevin.android.lib.ropay.alipay.AliPayInfo;
-import me.rokevin.android.ropay.alipay.AlipayActivity;
 import me.rokevin.android.ropay.unipay.UnionActivity;
 import me.rokevin.android.ropay.wxpay.WXActivity;
 
@@ -53,6 +54,16 @@ public class MainActivity extends Activity {
             @Override
             public void onWxpayFail() {
 
+            }
+
+            @Override
+            public void onUnionSucc() {
+                Toast.makeText(mContext, "银联支付成功", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onUnionFail() {
+                Toast.makeText(mContext, "银联支付失败", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -141,7 +152,18 @@ public class MainActivity extends Activity {
         startActivity(new Intent(this, WXActivity.class));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        mRoPay.onActivityResult(requestCode, resultCode, data);
+    }
+
     public void doUnionpay() {
+
+        String tn = "743195123144752447500";
+
+        UPPayAssistEx.startPay(this, null, null, tn, "01");
 
         startActivity(new Intent(this, UnionActivity.class));
     }

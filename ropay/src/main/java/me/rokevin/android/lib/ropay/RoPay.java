@@ -1,7 +1,9 @@
 package me.rokevin.android.lib.ropay;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
@@ -16,6 +18,10 @@ import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.unionpay.UPPayAssistEx;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Map;
 
@@ -40,6 +46,7 @@ public class RoPay {
     private Handler mHandler;
     private AlipayUtil mAlipayUtil;
     private WXPayReceiver mWXPayReceiver;
+    private String mMode; // 00:正式  01:测试
 
     /**
      * 支付方式 3:支付宝, 1:微信支付
@@ -267,6 +274,105 @@ public class RoPay {
     }
 
     /**
+     * 银联支付
+     *
+     * @param tn 银联给出的交易号
+     */
+    public void doUnionpay(String tn, String mode) {
+
+        mMode = mode;
+
+        UPPayAssistEx.startPay(mActivity, null, null, tn, mode);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        /*************************************************
+         * 步骤3：处理银联手机支付控件返回的支付结果
+         ************************************************/
+        if (data == null) {
+            return;
+        }
+
+        String msg = "";
+        /*
+         * 支付控件返回字符串:success、fail、cancel 分别代表支付成功，支付失败，支付取消
+         */
+        String str = data.getExtras().getString("pay_result");
+        if (str.equalsIgnoreCase("success")) {
+            // 支付成功后，extra中如果存在result_data，取出校验
+            // result_data结构见c）result_data参数说明
+            if (data.hasExtra("result_data")) {
+                String result = data.getExtras().getString("result_data");
+                try {
+                    JSONObject resultJson = new JSONObject(result);
+                    String sign = resultJson.getString("sign");
+                    String dataOrg = resultJson.getString("data");
+                    // 验签证书同后台验签证书
+                    // 此处的verify，商户需送去商户后台做验签
+                    boolean ret = verifyUnion(dataOrg, sign, mMode);
+                    if (ret) {
+                        // 验证通过后，显示支付结果
+                        msg = "支付成功！";
+
+                        if (mOnPayCallback != null) {
+                            mOnPayCallback.onUnionSucc();
+                        }
+                    } else {
+                        // 验证不通过后的处理
+                        // 建议通过商户后台查询支付结果
+                        msg = "支付失败！";
+
+                        if (mOnPayCallback != null) {
+                            mOnPayCallback.onUnionFail();
+                        }
+                    }
+                } catch (JSONException e) {
+                }
+            } else {
+                // 未收到签名信息
+                // 建议通过商户后台查询支付结果
+                msg = "支付成功！";
+
+                if (mOnPayCallback != null) {
+                    mOnPayCallback.onUnionSucc();
+                }
+            }
+        } else if (str.equalsIgnoreCase("fail")) {
+            msg = "支付失败！";
+
+            if (mOnPayCallback != null) {
+                mOnPayCallback.onUnionFail();
+            }
+        } else if (str.equalsIgnoreCase("cancel")) {
+            msg = "用户取消了支付";
+
+            if (mOnPayCallback != null) {
+                mOnPayCallback.onUnionFail();
+            }
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        builder.setTitle("支付结果通知");
+        builder.setMessage(msg);
+        builder.setInverseBackgroundForced(true);
+        // builder.setCustomTitle();
+        builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+
+    private boolean verifyUnion(String msg, String sign64, String mode) {
+        // 此处的verify，商户需送去商户后台做验签
+        return true;
+
+    }
+
+    /**
      * 获取支付方式
      *
      * @return
@@ -321,6 +427,10 @@ public class RoPay {
         void onWxpaySucc();
 
         void onWxpayFail();
+
+        void onUnionSucc();
+
+        void onUnionFail();
     }
 
     /**
