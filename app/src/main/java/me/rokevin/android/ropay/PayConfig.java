@@ -13,21 +13,14 @@ public class PayConfig {
      * 用商户私钥签名,支付回调地址
      */
 
-    // 商户PID(商户合作ID)
-    public static final String ALI_PARTNER_TEST = "";
-    // 商户收款账号
-    public static final String ALI_SELLER_TEST = "";
-
-    // 商户PID(商户合作ID) 新疆
-    public static final String ALI_PARTNER = "";
     // 商户收款账号 新疆
-    public static final String ALI_SELLER = "";
+    public static final String ALI_APPID = "2017010404830431";
 
     // 支付宝回调给服务器地址
-    public static final String ALI_PAY_URL_CALL_BACK_TEST = "";     // 测试支付回调地址
+    public static final String ALI_PAY_URL_CALL_BACK_TEST = "http://hmtest.hlvan.cn/zfbCallBackController/callback";     // 测试支付回调地址
 
     // 支付宝回调给服务器地址
-    public static final String ALI_PAY_URL_CALL_BACK = "";              // 线上支付回调地址
+    public static final String ALI_PAY_URL_CALL_BACK = "http://hmtest.hlvan.cn/zfbCallBackController/callback";              // 线上支付回调地址
 
     // 商户私钥，pkcs8格式
     public static final String ALI_RSA_PRIVATE = "";
@@ -46,26 +39,12 @@ public class PayConfig {
      *
      * @return
      */
-    public static String getPartner() {
+    public static String getAliAppId() {
 
         if (BuildConfig.DEBUG) {
-            return ALI_PARTNER_TEST;
+            return ALI_APPID;
         } else {
-            return ALI_PARTNER;
-        }
-    }
-
-    /**
-     * 获取支付地址
-     *
-     * @return
-     */
-    public static String getSeller() {
-
-        if (BuildConfig.DEBUG) {
-            return ALI_SELLER_TEST;
-        } else {
-            return ALI_SELLER;
+            return ALI_APPID;
         }
     }
 

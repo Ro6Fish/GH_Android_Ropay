@@ -3,7 +3,7 @@
  * shiqun.shi@alipay.com
  */
 
-package me.rokevin.android.lib.ropay.util;
+package me.rokevin.android.lib.ropay.alipay_old;
 
 import android.util.Log;
 

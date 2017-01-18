@@ -1,4 +1,4 @@
-package me.rokevin.android.lib.ropay.util;
+package me.rokevin.android.lib.ropay.alipay_old;
 
 import android.text.TextUtils;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package me.rokevin.android.lib.ropay;
+package me.rokevin.android.lib.ropay.wxpay;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

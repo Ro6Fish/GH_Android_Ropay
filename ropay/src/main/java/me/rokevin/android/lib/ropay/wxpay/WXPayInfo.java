@@ -1,4 +1,4 @@
-package me.rokevin.android.lib.ropay.modle;
+package me.rokevin.android.lib.ropay.wxpay;
 
 /**
  * Created by luokaiwen on 16/6/27.

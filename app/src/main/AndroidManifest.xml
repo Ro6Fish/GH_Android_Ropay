@@ -15,6 +15,50 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 支付宝 -->
+        <activity
+            android:name=".alipay.AlipayActivity"
+            android:icon="@drawable/msp_icon"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".alipay.H5AlipayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+
+        <!-- 微信 -->
+        <activity
+            android:name=".wxpay.WXActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+
+        <!-- 银联 -->
+        <activity
+            android:name=".unipay.UnionActivity"
+            android:label="@string/jar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".unipay.JARActivity"
+            android:label="@string/jar" />
+
+        <activity
+            android:name=".unipay.APKActivity"
+            android:label="@string/jar" />
+
     </application>
 
 </manifest>
