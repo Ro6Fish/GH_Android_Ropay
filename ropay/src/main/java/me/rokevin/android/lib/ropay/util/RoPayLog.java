@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class RoPayLog {
 
-    private static final boolean LOGABLE = false;
+    private static final boolean LOGABLE = true;
 
     private static List<String> blockTags = new ArrayList<String>();
 

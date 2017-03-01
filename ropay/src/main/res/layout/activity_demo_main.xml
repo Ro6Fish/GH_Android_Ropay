@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/jsb_common_bg"
+              android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="CP银联间连插件"
+            android:textColor="#ffffffff"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:id="@+id/ll_env"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/env_icon"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="环境选择："
+                    android:textColor="#ff444444" />
+
+                <TextView
+                    android:id="@+id/et_env"
+                    android:text="测试外网环境"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_version"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_version"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="版本号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_version"
+                          android:text="20140728"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_busitype"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_busitype"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="业务类型："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_busitype"
+                          android:text="0001"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <include layout="@layout/textfield_shadow" />
+
+            <LinearLayout
+                android:id="@+id/ll_merid"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/tv_merid"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="商户号："
+                    android:textColor="#ff444444"/>
+
+                <TextView
+                    android:id="@+id/et_merid"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp"/>
+                <!--
+                android:text="000001610101877"
+                android:completionThreshold="1"-->
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_merbgurl"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_merbgurl"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="商户后台地址："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_merbgurl"
+                          android:text="http://131.252.85.244:9080/CPPayWeb/trans!returnCommercial.ac"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_remoteaddr"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_remoteaddr"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="客户端IP："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_remoteaddr"
+                          android:text="131.252.85.195"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_merorderno"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/tv_merorderno"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="商户订单号："
+                    android:textColor="#ff444444" />
+
+                <EditText
+                    android:id="@+id/et_merorderno"
+                    android:text="20161209201612092016120920161209"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_orderamt"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_orderamt"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="订单金额："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_orderamt"
+                          android:text="000000000001"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_trandate"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_trandate"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="商户交易日期："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_trandate"
+                          android:text="20161213"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_trantime"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_trantime"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="商户交易时间："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_trantime"
+                          android:text="101122"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_accesstype"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/tv_accesstype"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="接入类型："
+                    android:textColor="#ff444444" />
+
+                <EditText
+                    android:id="@+id/et_accesstype"
+                    android:text="0"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_instuid"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_instuid"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="接入机构号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_instuid"
+                          android:text=""
+                          android:hint="以机构身份接入时必填"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_acqcode"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_acqcode"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="收单机构号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_acqcode"
+                          android:text=""
+                          android:hint="ChinaPay分配"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_trantype"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_trantype"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="交易类型："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_trantype"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_curryno"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_curryno"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="交易币种："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_curryno"
+                          android:text="CNY"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_splittype"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_splittype"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="分账类型："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_splittype"
+                          android:text=""
+                          android:hint="不分账不填写此域"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_splitmethod"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_splitmethod"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="分账方式："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_splitmethod"
+                          android:text=""
+                          android:hint="不分账不填写此域"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_mersplitmsg"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_mersplitmsg"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="订单分账信息："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_mersplitmsg"
+                          android:text=""
+                          android:hint="不分账不填写此域"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_bankinstno"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_bankinstno"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="支付机构号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_bankinstno"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_merpageurl"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_merpageurl"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="商户后台地址："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_merpageurl"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_commoditymsg"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_commoditymsg"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="商品信息："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_commoditymsg"
+                          android:text=""
+                          android:hint="描述购买商品的信息，ChinaPay原样返回"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_merresv"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_merresv"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="支付机构号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_merresv"
+                          android:text=""
+                          android:hint="商户自定义，ChinaPay原样返回"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_tranreserved"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_tranreserved"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="交易扩展域："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_tranreserved"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_cardtrandata"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_cardtrandata"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="有卡交易域："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_cardtrandata"
+                          android:text=""
+                          android:hint=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_paytimeout"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_paytimeout"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="支付超时时间："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_paytimeout"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_timestamp"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_timestamp"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="防钓鱼时间戳："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_timestamp"
+                          android:text=""
+                          android:hint="当前系统时间YYYYMMDDHHMMSS"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_riskdata"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_riskdata"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="风控数据："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_riskdata"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/ll_signature"
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/tv_signature"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="签名："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/et_signature"
+                          android:text=""
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/jsb_btn_con"
+                android:onClick="btnConfirm"
+                android:text="确定"
+                android:textColor="#ff444444"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

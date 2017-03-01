@@ -6,12 +6,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.chinapay.cppaysdk.activity.Initialize;
+import com.chinapay.cppaysdk.bean.OrderInfo;
+import com.chinapay.cppaysdk.global.CPGlobalInfo;
+import com.chinapay.cppaysdk.global.ResultInfo;
+import com.chinapay.cppaysdk.util.Utils;
 import com.tencent.mm.sdk.constants.Build;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.modelpay.PayReq;
@@ -30,6 +36,7 @@ import me.rokevin.android.lib.ropay.alipay.PayResult;
 import me.rokevin.android.lib.ropay.alipay.util.AliOrderInfoUtil;
 import me.rokevin.android.lib.ropay.alipay_old.AlipayResultUtil;
 import me.rokevin.android.lib.ropay.alipay_old.AlipayUtil;
+import me.rokevin.android.lib.ropay.util.ChinapayUtil;
 import me.rokevin.android.lib.ropay.util.RoPayLog;
 import me.rokevin.android.lib.ropay.wxpay.WXPayInfo;
 import me.rokevin.android.lib.ropay.wxpay.WXPayReceiver;
@@ -56,6 +63,8 @@ public class RoPay {
     public RoPay(Activity activity) {
 
         mActivity = activity;
+        // 初始化手机POS环境
+        Utils.setPackageName(mActivity.getPackageName());//MY_PKG是你项目的包名
         initPay();
     }
 
@@ -285,6 +294,51 @@ public class RoPay {
         UPPayAssistEx.startPay(mActivity, null, null, tn, mode);
     }
 
+    public void doChinapay(OrderInfo orderInfo, String mode) {
+
+        ChinapayUtil.addPermission(mActivity);
+
+        // 设置Intent指向Initialize.class
+        Intent intent = new Intent(mActivity, Initialize.class);
+        // this为你当前的activity.this
+        // 传入对象参数
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("orderInfo", orderInfo);
+        intent.putExtras(bundle);
+        intent.putExtra("mode", mode); // 测试
+        // orderInfo为启动插件时传入的OrderInfo对象。
+        // 使用intent跳转至移动认证插件
+        mActivity.startActivity(intent);
+    }
+
+    public void onResume() {
+
+        if (Utils.getResultInfo() != null) {
+            ResultInfo resultInfo = Utils.getResultInfo();
+            if (resultInfo.getRespCode() != null && !resultInfo.getRespCode().equals("")) {
+                if (resultInfo.getRespCode().equals("0000")) {
+                    String orderInfo = Utils.getResultInfo().getOrderInfo();
+                    if (orderInfo != null) {
+
+                        if (mOnPayCallback != null) {
+                            mOnPayCallback.onChinapaySucc();
+                        }
+
+                        RoPayLog.e("chinapay", "chinapay:" + "应答码：" + resultInfo.getRespCode() + "\n应答描述:" + resultInfo.getRespDesc() + "\n详细结果：" + orderInfo);
+                    }
+                } else {
+
+                    if (mOnPayCallback != null) {
+                        mOnPayCallback.onChinapayFail("支付失败，错误码：" + resultInfo.getRespCode());
+                    }
+
+                    RoPayLog.e("chinapay", "chinapay:" + "应答码：" + resultInfo.getRespCode() + "\n应答描述:" + resultInfo.getRespDesc());
+                }
+            }
+        }
+        CPGlobalInfo.init();
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         /*************************************************
@@ -410,6 +464,10 @@ public class RoPay {
         mOnPayCallback = onPayCallback;
     }
 
+    public OnPayCallback getOnPayListener() {
+        return mOnPayCallback;
+    }
+
     public void setOnPayConfirmListener(OnPayConfirmListener onPayConfirmListener) {
 
         mOnPayConfirmListener = onPayConfirmListener;
@@ -431,6 +489,10 @@ public class RoPay {
         void onUnionSucc();
 
         void onUnionFail();
+
+        void onChinapaySucc();
+
+        void onChinapayFail(String message);
     }
 
     /**

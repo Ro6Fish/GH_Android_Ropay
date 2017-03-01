@@ -12,5 +12,7 @@
     <string name="payBYJAR">JAR接入</string>
     <string name="alipay">支付宝</string>
     <string name="wxpay">微信</string>
+    <string name="pay">支付</string>
+    <string name="chinapay">chinapay</string>
 
 </resources>

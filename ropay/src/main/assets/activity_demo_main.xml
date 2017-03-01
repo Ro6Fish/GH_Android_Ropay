@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/jsb_common_bg"
+              android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_back"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:background="@drawable/jsb_btn_common_back"-->
+            <!--android:onClick="btnBack" />-->
+
+        <TextView
+            android:id="@+id/titleView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="CP银联间连插件"
+            android:textColor="#ffffffff"
+            android:textSize="25sp" />
+
+        <!--<ImageButton-->
+            <!--android:layout_width="20dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:background="#00ffffff"-->
+            <!--android:onClick="btnMore" />-->
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:id="@+id/card_info"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/env_icon"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="环境选择："
+                    android:textColor="#ff444444" />
+
+                <EditText
+                    android:id="@+id/edt_env"
+                    android:text="内网测试"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout 
+                android:id="@+id/pan_zone" 
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/txt_sysid"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="系统编号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/edt_sysid"
+                          android:text="90039"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+            
+            <LinearLayout
+                android:id="@+id/card_info"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/card_icon"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="卡类型："
+                    android:textColor="#ff444444" />
+
+                <EditText
+                    android:id="@+id/edt_card_type"
+                    android:text="建设银行 储蓄卡"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout 
+                android:id="@+id/pan_zone" 
+                style="@style/ll_item" >
+
+                <TextView android:id="@+id/txt_card"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="银行卡号："
+                          android:textColor="#ff444444"/>
+
+                <EditText android:id="@+id/edt_card_num"
+                          android:text="6217 0013 7000 1038 025"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+
+            <LinearLayout 
+                android:id="@+id/name_zone"
+                style="@style/ll_item"
+                android:layout_marginTop="5dp" >
+
+                <TextView android:id="@+id/txt_name"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="姓名："
+                          android:textColor="#ff444444" />
+                <EditText android:id="@+id/et_name_zone"
+                          android:text="刘琳驰"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/card_info"
+                style="@style/ll_item"
+                android:layout_marginTop="8dp" >
+
+                <TextView
+                    android:id="@+id/card_icon"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="证件类型："
+                    android:textColor="#ff444444" />
+
+                <EditText
+                    android:id="@+id/edt_cert_type"
+                    android:text="身份证"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout 
+                style="@style/ll_item" 
+                android:id="@+id/id_zone">
+
+                <TextView android:id="@+id/txt_idno"
+                          style="@style/tv_left"
+                          android:layout_width="110dp"
+                          android:text="证件号码："
+                          android:textColor="#ff444444" />
+
+                <EditText android:id="@+id/edt_zhengjian_num"
+                          android:text="231002198903302089"
+                          style="@style/tv_right"
+                          android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center_vertical"
+                          android:layout_weight="1"
+                          android:background="#ffffff"
+                          android:singleLine="true"
+                          android:textColor="#444444"
+                          android:textColorHint="#cccccc"
+                          android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+
+            <LinearLayout
+                android:id="@+id/jsb_phone_zone"
+                style="@style/ll_item"
+                android:layout_marginTop="5dp" >
+
+                <TextView
+                    android:id="@+id/txt_phone"
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="手机号码："
+                    android:textColor="#ff444444" />
+                <EditText
+                    android:id="@+id/et_phone_num"
+                    android:text="13917807922"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+            <ImageView style="@style/common_field_split" />
+            <LinearLayout
+                android:id="@+id/jsb_dynamic_sms_zone"
+                style="@style/ll_item" >
+
+                <TextView
+                    style="@style/tv_left"
+                    android:layout_width="110dp"
+                    android:text="密钥："
+                    android:textColor="#ff444444" />
+
+                <EditText
+                    android:id="@+id/et_miyao"
+                    android:hint="请输入密钥"
+                    style="@style/tv_right"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:singleLine="true"
+                    android:textColor="#444444"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <include layout="@layout/textfield_shadow" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/jsb_btn_con"
+                android:onClick="btnConfirm"
+                android:text="确定"
+                android:textColor="#ff444444"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
