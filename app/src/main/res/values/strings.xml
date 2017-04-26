@@ -14,5 +14,6 @@
     <string name="wxpay">微信</string>
     <string name="pay">支付</string>
     <string name="chinapay">chinapay</string>
+    <string name="succ_alipay">\"支付宝支付成功\"</string>
 
 </resources>

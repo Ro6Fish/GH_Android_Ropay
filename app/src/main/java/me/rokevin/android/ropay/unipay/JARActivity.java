@@ -2,7 +2,6 @@ package me.rokevin.android.ropay.unipay;
 
 import android.app.Activity;
 import android.widget.TextView;
-
 import com.unionpay.UPPayAssistEx;
 
 public class JARActivity extends BaseActivity {

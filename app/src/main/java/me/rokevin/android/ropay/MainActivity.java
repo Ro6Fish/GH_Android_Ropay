@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
             @Override
             public void onAlipaySucc() {
 
-                Toast.makeText(mContext, "支付宝支付成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, R.string.succ_alipay, Toast.LENGTH_SHORT).show();
             }
 
             @Override

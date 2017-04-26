@@ -1,7 +1,5 @@
 package me.rokevin.android.ropay.unipay;
 
-import android.util.Base64;
-
 import java.math.BigInteger;
 import java.security.KeyFactory;
 import java.security.MessageDigest;
@@ -15,8 +13,8 @@ import java.security.spec.RSAPrivateCrtKeySpec;
 import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-
 import javax.crypto.Cipher;
+import android.util.Base64;
 
 public class RSAUtil {
 
@@ -92,7 +90,7 @@ public class RSAUtil {
      * @return
      */
     public static byte[] decrypt(PrivateKey priKey, byte[] data,
-                                 String padding, String provider) {
+            String padding, String provider) {
         try {
             Cipher cipher = Cipher.getInstance(padding, provider);
             cipher.init(Cipher.DECRYPT_MODE, priKey);
@@ -166,7 +164,7 @@ public class RSAUtil {
      * @return 私钥
      */
     public static PrivateKey generateRSAPrivateKey(String modulus,
-                                                   String privateExponent) {
+            String privateExponent) {
         try {
             KeyFactory keyFactory = KeyFactory.getInstance(RSA);
             RSAPrivateKeySpec pubKeySpec = new RSAPrivateKeySpec(
@@ -266,7 +264,7 @@ public class RSAUtil {
      * @return 公钥
      */
     public static PublicKey generateRSAPublicKey(String modulus,
-                                                 String publicExponent) {
+            String publicExponent) {
         try {
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
             RSAPublicKeySpec pubKeySpec = new RSAPublicKeySpec(new BigInteger(
@@ -279,7 +277,7 @@ public class RSAUtil {
 
     public static PublicKey getPublicKeyPM() {
         // 请将此处的module换成PM环境商户验签的公钥模数
-        String modulus = "23648629510357402173669374843546537318532861396089478651610490265597426690711092692490012429464861104676801339474220894685964389750254240882066338437712341498313076007251358899488346743554156067576120095739341094220657657611893755799646325194641430110114613586989866468748149428464174345443169749235358776080247588710246733575431530477273705811466095207773188767974550742707293785661521305267533098997705930724499157184797236612324838287379798375903922360666026664942383548006246201656190964746068225967889145661249463716565124050082767382345820178584568857820200627919768134084891356188058390460707236118612628845159";
+        String modulus = "24870613246304283289263670822577417714537477136695312218046086562441084140352408862449003198972758030370375896331356438381534807815999481415930217971513079824183591552429779125222230389655838097565141139205829591128287005548898062000970767426912014994392229218979869216370190349843903870279325956661459861716847460988265260792970759967490015941772320263508330685602563839220027394572548955687677315821727057921756004005781874479358265172016335126486731385109336772938263090077762887508722625235251295041241798219236919770312254416281253815794530657627243362881204125234159183339122880098511453026644263131341899862471";
         String publicExponent = "65537";
         PublicKey publicKey = RSAUtil.generateRSAPublicKey(modulus,
                 publicExponent);

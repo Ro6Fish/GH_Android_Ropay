@@ -1,5 +1,11 @@
 package me.rokevin.android.ropay.unipay;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import org.json.JSONException;
+import org.json.JSONObject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -14,14 +20,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 
 import me.rokevin.android.ropay.R;
 
@@ -62,7 +60,7 @@ public abstract class BaseActivity extends Activity implements Callback,
     };
 
     public abstract void doStartUnionPayPlugin(Activity activity, String tn,
-                                               String mode);
+            String mode);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +68,7 @@ public abstract class BaseActivity extends Activity implements Callback,
         mContext = this;
         mHandler = new Handler(this);
 
-        setContentView(R.layout.activity_unionpay_base);
+        setContentView(R.layout.activity_unionpay_goods);
 
         Button btn0 = (Button) findViewById(R.id.btn0);
         btn0.setTag(0);
@@ -129,7 +127,8 @@ public abstract class BaseActivity extends Activity implements Callback,
          */
         String str = data.getExtras().getString("pay_result");
         if (str.equalsIgnoreCase("success")) {
-            // 支付成功后，extra中如果存在result_data，取出校验
+        	
+            // 如果想对结果数据验签，可使用下面这段代码，但建议不验签，直接去商户后台查询交易结果
             // result_data结构见c）result_data参数说明
             if (data.hasExtra("result_data")) {
                 String result = data.getExtras().getString("result_data");
@@ -137,24 +136,21 @@ public abstract class BaseActivity extends Activity implements Callback,
                     JSONObject resultJson = new JSONObject(result);
                     String sign = resultJson.getString("sign");
                     String dataOrg = resultJson.getString("data");
-                    // 验签证书同后台验签证书
-                    // 此处的verify，商户需送去商户后台做验签
+                    // 此处的verify建议送去商户后台做验签
+                    // 如要放在手机端验，则代码必须支持更新证书 
                     boolean ret = verify(dataOrg, sign, mMode);
                     if (ret) {
-                        // 验证通过后，显示支付结果
+                        // 验签成功，显示支付结果
                         msg = "支付成功！";
                     } else {
-                        // 验证不通过后的处理
-                        // 建议通过商户后台查询支付结果
+                        // 验签失败
                         msg = "支付失败！";
                     }
                 } catch (JSONException e) {
                 }
-            } else {
-                // 未收到签名信息
-                // 建议通过商户后台查询支付结果
-                msg = "支付成功！";
-            }
+            } 
+            // 结果result_data为成功时，去商户后台查询一下再展示成功
+            msg = "支付成功！";
         } else if (str.equalsIgnoreCase("fail")) {
             msg = "支付失败！";
         } else if (str.equalsIgnoreCase("cancel")) {
