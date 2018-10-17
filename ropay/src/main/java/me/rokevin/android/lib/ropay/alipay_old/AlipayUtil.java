@@ -3,6 +3,7 @@ package me.rokevin.android.lib.ropay.alipay_old;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.alipay.sdk.app.PayTask;
@@ -65,6 +66,37 @@ public class AlipayUtil {
 
                 PayTask alipay = new PayTask(mActivity);
                 Map<String, String> result = alipay.payV2(orderInfo, true);
+
+                Message msg = new Message();
+                msg.what = 1;
+                msg.obj = result;
+                mHandler.sendMessage(msg);
+            }
+        };
+
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+    }
+
+    /**
+     * 调起支付宝支付
+     *
+     * @param payInfo 服务端直接拼好的支付信息 orderParam + "&sign=" + encodedSign
+     */
+    public void pay(final String payInfo) {
+
+        if (TextUtils.isEmpty(payInfo)) {
+            Log.e("AlipayUtil", "支付宝支付信息有误");
+            return;
+        }
+
+        Runnable payRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+
+                PayTask alipay = new PayTask(mActivity);
+                Map<String, String> result = alipay.payV2(payInfo, true);
 
                 Message msg = new Message();
                 msg.what = 1;

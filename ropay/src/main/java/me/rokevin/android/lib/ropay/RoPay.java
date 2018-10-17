@@ -283,6 +283,17 @@ public class RoPay {
     }
 
     /**
+     * 调起支付宝客户端
+     *
+     * @param payInfo 服务端拼好的支付信息
+     */
+    public void doAlipay(String payInfo) {
+
+        // 调用支付宝支付
+        mAlipayUtil.pay(payInfo);
+    }
+
+    /**
      * 银联支付
      *
      * @param tn 银联给出的交易号

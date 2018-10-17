@@ -85,8 +85,8 @@ public class AliOrderInfoUtil {
 
         keyValues.put("sign_type", rsa2 ? "RSA2" : "RSA");
 
-        // keyValues.put("timestamp", getTime());
-        keyValues.put("timestamp", "2017-01-18 15:27:51");
+         keyValues.put("timestamp", getTime());
+//        keyValues.put("timestamp", "2017-01-18 15:27:51");
 
         keyValues.put("version", "1.0");
 

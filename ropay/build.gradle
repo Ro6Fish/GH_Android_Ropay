@@ -53,7 +53,7 @@ def gitUrl = 'git@github.com:Ro6Fish/GH_Android_Ropay.git'   // Git仓库的url
 group = "me.rokevin.android.lib"            // Maven Group ID for the artifact，一般填你唯一的包名
 // 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
 // 这个version影响后面的引用
-version = "1.0.8"
+version = "1.0.9"
 
 install {
     repositories.mavenInstaller {
