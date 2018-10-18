@@ -286,11 +286,23 @@ public class RoPay {
      * 调起支付宝客户端
      *
      * @param payInfo 服务端拼好的支付信息
+     * @param sign    签名信息
      */
-    public void doAlipay(String payInfo) {
+    public void doAlipay(String payInfo, String sign) {
 
         // 调用支付宝支付
-        mAlipayUtil.pay(payInfo);
+        mAlipayUtil.pay(payInfo, sign);
+    }
+
+    /**
+     * 调起支付宝客户端
+     *
+     * @param orderInfo 服务端拼好的支付信息
+     */
+    public void doAlipay(String orderInfo) {
+
+        // 调用支付宝支付
+        mAlipayUtil.pay(orderInfo);
     }
 
     /**
